@@ -45,7 +45,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex-1 flex flex-col relative w-full h-full px-5 sm:px-8 md:px-24">
+    <div className="flex-1 flex flex-col relative w-full px-5 sm:px-8 md:px-24">
       {/* Background Slideshow */}
       <div className="absolute inset-0 z-[-1] overflow-hidden bg-black">
         <AnimatePresence>

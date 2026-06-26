@@ -149,7 +149,7 @@ export default function LocationPage() {
   };
 
   return (
-    <div className="relative h-[calc(100vh-80px)] w-full overflow-hidden flex flex-col">
+    <div className="relative flex-1 w-full overflow-hidden flex flex-col">
       {/* Full-bleed Map Container */}
       <div className="absolute inset-0 z-0">
         <Zenith3DMap 

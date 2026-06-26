@@ -36,7 +36,7 @@ export default function RootLayout({
         <link href="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.114.0/Widgets/widgets.min.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.114.0/Cesium.js" async></script>
       </head>
-      <body className="min-h-full flex flex-col font-sans">
+      <body className="min-h-full flex flex-col font-sans overflow-x-hidden">
         <Header />
 
         <main className="flex-1 flex flex-col z-10 relative">
