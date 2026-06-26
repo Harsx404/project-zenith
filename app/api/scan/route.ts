@@ -147,16 +147,16 @@ export async function GET(request: Request) {
         const gmst = satellite.gstime(currentDate);
 
         const observerGd = {
-          longitude: satellite.degreesToRadians(lng),
-          latitude: satellite.degreesToRadians(lat),
-          height: 0 
+          longitude: lng * Math.PI / 180,
+          latitude: lat * Math.PI / 180,
+          height: 0
         };
 
         const positionEcf = satellite.eciToEcf(positionEci, gmst);
         const lookAngles = satellite.ecfToLookAngles(observerGd, positionEcf);
 
-        const altitudeDeg = satellite.radiansToDegrees(lookAngles.elevation);
-        const azimuthDeg = satellite.radiansToDegrees(lookAngles.azimuth);
+        const altitudeDeg = lookAngles.elevation * 180 / Math.PI;
+        const azimuthDeg = lookAngles.azimuth * 180 / Math.PI;
         
         // --- 2. Calculate PREDICTIVE state (Next 12 Hours) ---
         let zenithETA: string | undefined = undefined;
