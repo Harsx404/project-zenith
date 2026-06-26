@@ -169,11 +169,12 @@ export default function Zenith3DMap({
     if (map.current) return; // Initialize map only once
 
     try {
+      const isMobile = window.innerWidth < 768;
       map.current = new mapboxgl.Map({
         container: mapContainer.current,
         style: "mapbox://styles/mapbox/dark-v11",
         center: initialCenter.current,
-        zoom: initialTarget.current.hasLocation ? 16 : 3,
+        zoom: initialTarget.current.hasLocation ? (isMobile ? 14 : 16) : (isMobile ? 1.5 : 3),
         pitch: 60,
         bearing: -25,
         antialias: true,
@@ -316,7 +317,7 @@ export default function Zenith3DMap({
       <div ref={mapContainer} className="absolute inset-0" style={{ width: '100%', height: '100%' }} />
       
       {/* Floating Coordinate Card */}
-      <div className="absolute bottom-10 left-6 z-10 bg-black/40 text-white p-5 shadow-2xl border border-white/10 backdrop-blur-xl min-w-[250px] transition-transform duration-500 ease-out group-hover:scale-105 origin-bottom-left pointer-events-none">
+      <div className="hidden md:block absolute bottom-10 left-6 z-10 bg-black/40 text-white p-5 shadow-2xl border border-white/10 backdrop-blur-xl min-w-[250px] transition-transform duration-500 ease-out group-hover:scale-105 origin-bottom-left pointer-events-none">
         <div className="flex items-center gap-2 mb-4 border-b border-white/10 pb-3">
           <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
           <h3 className="text-[10px] font-heading font-bold tracking-[0.3em] uppercase text-white">{locationLabel}</h3>

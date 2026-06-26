@@ -163,18 +163,18 @@ export default function LocationPage() {
 
       {/* Floating UI Overlay */}
       <div className="relative z-10 w-full h-full pointer-events-none flex flex-col">
-        <div className="max-w-7xl mx-auto px-6 pt-8 w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 w-full">
           <div className="pointer-events-auto inline-block drop-shadow-2xl">
-            <h1 className="text-4xl font-heading tracking-[0.3em] font-light text-white mb-2 uppercase drop-shadow-lg">
+            <h1 className="text-2xl sm:text-4xl font-heading tracking-[0.2em] sm:tracking-[0.3em] font-light text-white mb-1 sm:mb-2 uppercase drop-shadow-lg">
               Target <span className="font-bold">Acquisition</span>
             </h1>
-            <p className="text-white/80 tracking-widest text-sm uppercase drop-shadow-md">Global Coordinates Uplink</p>
+            <p className="text-white/80 tracking-widest text-[10px] sm:text-sm uppercase drop-shadow-md">Global Coordinates Uplink</p>
           </div>
         </div>
 
         {/* Floating Input Panel */}
-        <div className="absolute top-8 right-6 w-full max-w-[400px] pointer-events-auto">
-          <div className="bg-black/60 backdrop-blur-xl border border-white/10 p-6 shadow-2xl">
+        <div className="absolute bottom-0 left-0 md:top-8 md:right-6 md:bottom-auto md:left-auto w-full md:max-w-[400px] pointer-events-auto">
+          <div className="bg-black/90 md:bg-black/60 backdrop-blur-2xl border-t md:border border-white/10 p-5 md:p-6 shadow-[0_-20px_40px_rgba(0,0,0,0.8)] md:shadow-2xl rounded-t-xl md:rounded-none">
             <CoordinateInput 
               lat={lat} 
               lng={lng} 

@@ -122,7 +122,7 @@ export default function CoordinateInput({
         </div>
       </div>
       
-      <div key={inputKey} className="grid grid-cols-2 gap-8">
+      <div key={inputKey} className="grid grid-cols-2 gap-4 sm:gap-8">
         <div>
           <label className="block text-[10px] text-cyan-100/50 mb-1 uppercase tracking-widest">Latitude</label>
           <input 
@@ -145,17 +145,17 @@ export default function CoordinateInput({
         </div>
       </div>
 
-      <div className="flex gap-4 pt-4">
+      <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 pt-2 sm:pt-4">
         <button 
           onClick={handleApply}
-          className="flex-1 flex items-center justify-center gap-2 bg-transparent border border-cyan-900/50 hover:border-cyan-400 text-cyan-50 py-3 text-xs tracking-[0.2em] font-heading transition-all hover:shadow-[0_0_15px_rgba(34,211,238,0.2)] hover:bg-cyan-950/30"
+          className="flex-1 flex items-center justify-center gap-2 bg-transparent border border-cyan-900/50 hover:border-cyan-400 text-cyan-50 py-3 text-[10px] sm:text-xs tracking-[0.2em] font-heading transition-all hover:shadow-[0_0_15px_rgba(34,211,238,0.2)] hover:bg-cyan-950/30"
         >
           <Check className="w-4 h-4 text-cyan-400" /> APPLY
         </button>
         <button 
           onClick={onUseCurrentLocation}
           disabled={isLocating}
-          className={`flex-1 flex items-center justify-center gap-2 border py-3 text-xs tracking-[0.2em] font-heading transition-all ${
+          className={`flex-1 flex items-center justify-center gap-2 border py-3 text-[10px] sm:text-xs tracking-[0.2em] font-heading transition-all ${
             isLocating ? "border-cyan-900/30 text-cyan-700 cursor-wait bg-transparent" : "border-cyan-900/50 hover:border-cyan-400 text-cyan-50 bg-cyan-950/20 hover:bg-cyan-900/30 hover:shadow-[0_0_15px_rgba(34,211,238,0.2)]"
           }`}
         >
