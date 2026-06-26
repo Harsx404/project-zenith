@@ -25,6 +25,13 @@ function ScanningContent() {
   const [currentLog, setCurrentLog] = useState(0);
 
   useEffect(() => {
+    // PRELOAD OPTIMIZATION:
+    // Aggressively download the massive 5MB Cesium 3D engine in the background 
+    // utilizing the user's hardware and bandwidth while they watch the 3.5s animation.
+    // By the time they reach the dashboard, the engine is already parsed in memory!
+    import("@/components/ZenithRadar");
+    import("@/components/CesiumGlobe").catch(() => {});
+
     // Cycle through logs quickly
     const logInterval = setInterval(() => {
       setCurrentLog(prev => {
