@@ -3,7 +3,6 @@
 import React, { useMemo, useRef, useEffect } from 'react';
 import { Viewer, Entity, PointGraphics, LabelGraphics, CameraFlyTo, PolylineGraphics, BillboardGraphics, EllipseGraphics } from 'resium';
 import * as Cesium from 'cesium';
-import "cesium/Build/Cesium/Widgets/widgets.css";
 import { CelestialObject } from '@/lib/types/celestial';
 import * as satellite from 'satellite.js';
 

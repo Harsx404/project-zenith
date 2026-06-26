@@ -32,6 +32,10 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${syncopate.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.114.0/Widgets/widgets.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.114.0/Cesium.js" async></script>
+      </head>
       <body className="min-h-full flex flex-col font-sans">
         <Header />
 
