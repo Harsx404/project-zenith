@@ -169,8 +169,7 @@ export async function GET(request: Request) {
           if (futurePv && futurePv.position && typeof futurePv.position !== 'boolean') {
             const fGmst = satellite.gstime(futureDate);
             const fEcf = satellite.eciToEcf(futurePv.position as satellite.EciVec3<number>, fGmst);
-            const fLook = satellite.ecfToLookAngles(observerGd, fEcf);
-            const fAlt = satellite.radiansToDegrees(fLook.elevation);
+            const fAlt = fLook.elevation * 180 / Math.PI;
             
             if (fAlt >= 80) {
               zenithETA = futureDate.toISOString();
@@ -186,8 +185,8 @@ export async function GET(request: Request) {
         const rangeKm = lookAngles.rangeSat;
 
         const positionGd = satellite.eciToGeodetic(positionEci, gmst);
-        const satLat = satellite.radiansToDegrees(positionGd.latitude);
-        const satLng = satellite.radiansToDegrees(positionGd.longitude);
+        const satLat = positionGd.latitude * 180 / Math.PI;
+        const satLng = positionGd.longitude * 180 / Math.PI;
 
         const type = name.toUpperCase().includes("ISS") ? "ISS" : "Satellite";
 
