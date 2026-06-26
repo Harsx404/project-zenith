@@ -169,6 +169,7 @@ export async function GET(request: Request) {
           if (futurePv && futurePv.position && typeof futurePv.position !== 'boolean') {
             const fGmst = satellite.gstime(futureDate);
             const fEcf = satellite.eciToEcf(futurePv.position as satellite.EciVec3<number>, fGmst);
+            const fLook = satellite.ecfToLookAngles(observerGd, fEcf);
             const fAlt = fLook.elevation * 180 / Math.PI;
             
             if (fAlt >= 80) {
