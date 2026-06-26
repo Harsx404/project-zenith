@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic';
 import { CelestialObject } from "@/lib/types/celestial";
 import { useSearchParams } from "next/navigation";
+import { ErrorBoundary } from "./ErrorBoundary";
 
 // Dynamically import the Cesium component to avoid Next.js Server-Side Rendering errors
 const CesiumGlobe = dynamic(() => import('./CesiumGlobe'), { 
@@ -28,13 +29,15 @@ export default function ZenithRadar({ objects, onSelectObject, selectedObjectId 
 
   return (
     <div className="w-full h-full relative">
-      <CesiumGlobe 
-        objects={objects} 
-        onSelectObject={onSelectObject} 
-        selectedObjectId={selectedObjectId}
-        observerLat={observerLat}
-        observerLng={observerLng}
-      />
+      <ErrorBoundary>
+        <CesiumGlobe 
+          objects={objects} 
+          onSelectObject={onSelectObject} 
+          selectedObjectId={selectedObjectId}
+          observerLat={observerLat}
+          observerLng={observerLng}
+        />
+      </ErrorBoundary>
     </div>
   );
 }
