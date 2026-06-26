@@ -162,7 +162,7 @@ export default function LocationPage() {
       </div>
 
       {/* Floating UI Overlay */}
-      <div className="relative z-10 w-full h-full pointer-events-none flex flex-col">
+      <div className="absolute inset-0 z-10 pointer-events-none flex flex-col">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 w-full">
           <div className="pointer-events-auto inline-block drop-shadow-2xl">
             <h1 className="text-2xl sm:text-4xl font-heading tracking-[0.2em] sm:tracking-[0.3em] font-light text-white mb-1 sm:mb-2 uppercase drop-shadow-lg">
