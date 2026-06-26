@@ -99,7 +99,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="font-heading text-xs tracking-[0.2em] text-cyan-400 border border-cyan-500/30 bg-cyan-500/10 px-6 py-3 hover:bg-cyan-500/20 transition-colors flex items-center gap-3"
+                className="font-heading text-[10px] sm:text-xs tracking-[0.1em] sm:tracking-[0.2em] text-cyan-400 border border-cyan-500/30 bg-cyan-500/10 px-4 py-3 sm:px-6 hover:bg-cyan-500/20 transition-colors flex items-center justify-between sm:justify-start gap-2 sm:gap-3 w-full sm:w-auto"
               >
                 {ONBOARDING_STEPS[step]} <span className="animate-pulse">_</span>
               </motion.button>
@@ -111,10 +111,10 @@ export default function Home() {
               >
                 <Link 
                   href="/location"
-                  className="inline-block relative overflow-hidden group border border-white/30 px-12 py-4"
+                  className="inline-flex relative overflow-hidden group border border-white/30 px-6 py-4 sm:px-12 w-full sm:w-auto justify-center"
                 >
                   <span className="absolute inset-0 bg-white translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-out" />
-                  <span className="relative font-heading text-xs tracking-[0.3em] group-hover:text-black transition-colors duration-500 flex items-center gap-4">
+                  <span className="relative font-heading text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.3em] group-hover:text-black transition-colors duration-500 flex items-center gap-3 sm:gap-4">
                     COMMENCE LINK <Telescope className="w-4 h-4" />
                   </span>
                 </Link>
