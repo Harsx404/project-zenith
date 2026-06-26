@@ -16,7 +16,7 @@ const SCAN_LOGS = [
   "ACQUIRING TARGETS..."
 ];
 
-export default function ScanningPage() {
+function ScanningContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const lat = searchParams.get("lat") || "0";
@@ -78,5 +78,15 @@ export default function ScanningPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+import { Suspense } from "react";
+
+export default function ScanningPage() {
+  return (
+    <Suspense fallback={<Loader />}>
+      <ScanningContent />
+    </Suspense>
   );
 }
