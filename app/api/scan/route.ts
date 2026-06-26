@@ -4,6 +4,8 @@ import { getVisibilityStatus } from "@/lib/astronomy/zenithFilter";
 import * as satellite from "satellite.js";
 import { Equator, Horizon, Observer, Body, AstroTime } from "astronomy-engine";
 
+export const dynamic = "force-dynamic";
+
 // Fetch the 100 brightest visual satellites from CelesTrak
 const CELESTRAK_URL = "https://celestrak.org/NORAD/elements/gp.php?GROUP=visual&FORMAT=tle";
 
