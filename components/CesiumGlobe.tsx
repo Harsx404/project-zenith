@@ -186,7 +186,7 @@ export default function CesiumGlobe({ objects, onSelectObject, selectedObjectId,
         const prop = positionProperties.current[obj.id] as Cesium.SampledPositionProperty;
         const time = Cesium.JulianDate.fromDate(new Date(obj.lastUpdated));
         let renderAlt = (obj.distanceKm || 0) > 0 ? (obj.distanceKm! * 1000) : 5000000;
-        const position = Cesium.Cartesian3.fromDegrees(obj.longitude, obj.latitude, renderAlt);
+        const position = Cesium.Cartesian3.fromDegrees(obj.longitude || 0, obj.latitude || 0, renderAlt);
         
         try {
           prop.addSample(time, position);
@@ -367,7 +367,7 @@ export default function CesiumGlobe({ objects, onSelectObject, selectedObjectId,
             } catch(e) {}
           }
 
-          const fallbackPosition = Cesium.Cartesian3.fromDegrees(obj.longitude, obj.latitude, renderAlt);
+          const fallbackPosition = Cesium.Cartesian3.fromDegrees(obj.longitude || 0, obj.latitude || 0, renderAlt);
           const positionProp = positionProperties.current[obj.id] || fallbackPosition;
 
           return (
