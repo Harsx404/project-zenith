@@ -45,7 +45,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex-1 flex flex-col relative w-full h-full px-8 md:px-24">
+    <div className="flex-1 flex flex-col relative w-full h-full px-5 sm:px-8 md:px-24">
       {/* Background Slideshow */}
       <div className="absolute inset-0 z-[-1] overflow-hidden bg-black">
         <AnimatePresence>
@@ -77,7 +77,7 @@ export default function Home() {
           </span>
         </div>
 
-        <h1 className="text-5xl md:text-7xl font-bold font-heading mb-10 leading-tight">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-heading mb-8 md:mb-10 leading-tight">
           TRACK<br />YOUR<br />ZENITH
         </h1>
         
@@ -90,7 +90,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="mt-16 ml-2 h-24">
+        <div className="mt-12 md:mt-16 ml-2 h-24">
           <AnimatePresence mode="wait">
             {step < ONBOARDING_STEPS.length ? (
               <motion.button
@@ -125,13 +125,13 @@ export default function Home() {
       </div>
 
       {/* Bottom Footer Elements */}
-      <div className="absolute bottom-8 left-8 right-8 flex items-center justify-between z-10 pointer-events-none">
-        <div className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center p-2 relative pointer-events-auto">
+      <div className="absolute bottom-6 left-5 right-5 md:bottom-8 md:left-8 md:right-8 flex items-center justify-between z-10 pointer-events-none">
+        <div className="hidden sm:flex w-12 h-12 rounded-full border border-white/30 items-center justify-center p-2 relative pointer-events-auto">
           <CircleDot className="w-full h-full text-white/50" strokeWidth={1} />
           <div className="absolute top-1/2 -right-2 w-1 h-1 bg-white rounded-full" />
         </div>
         
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-start sm:items-center gap-2">
           <div className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center pointer-events-auto">
             <div className="w-3 h-[1px] bg-white/70" />
           </div>
@@ -150,8 +150,8 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Right Side Pagination Dots */}
-      <div className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-6 items-center z-10">
+      {/* Right Side Pagination Dots (Hidden on Mobile to prevent overlap) */}
+      <div className="hidden sm:flex absolute right-8 top-1/2 -translate-y-1/2 flex-col gap-6 items-center z-10">
         {BACKGROUND_IMAGES.map((_, i) => (
           <div key={i} onClick={() => setBgIndex(i)} className="cursor-pointer flex justify-center items-center h-3 w-3">
             {bgIndex === i ? (
