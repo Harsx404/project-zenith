@@ -1,0 +1,58 @@
+@import "tailwindcss";
+@import "mapbox-gl/dist/mapbox-gl.css";
+
+@theme {
+  --color-space-black: #02040A;
+  --color-space-grey: #11141D;
+  --color-ice-blue: #D6E4F0;
+  --color-ice-glow: #60A5FA;
+  
+  --font-sans: var(--font-space), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-syncopate), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-space-black text-white;
+    background-image: url('/boliviainteligente-GH6uTRKPK0Q-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+
+  /* Add a very subtle dark overlay so text remains readable over the image */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at left center, rgba(2, 4, 10, 0.4) 0%, rgba(2, 4, 10, 0.8) 100%);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading uppercase tracking-widest text-white;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-none shadow-none;
+  }
+  
+  .glass-panel-active {
+    @apply bg-white/10 backdrop-blur-md border border-white/30 rounded-none;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  }
+  
+  .nav-link {
+    @apply font-heading text-[10px] sm:text-xs tracking-[0.2em] text-white hover:text-ice-blue transition-colors duration-300;
+  }
+}
