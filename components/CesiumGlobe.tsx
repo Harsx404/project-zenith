@@ -195,7 +195,11 @@ export default function CesiumGlobe({ objects, onSelectObject, selectedObjectId,
   }, [visibleObjects]);
 
   const cameraDestination = useMemo(() => {
-    return Cesium.Cartesian3.fromDegrees(observerLng, observerLat, 5000000);
+    let alt = 5000000;
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      alt = 8000000; // Pull back slightly on mobile to see a wider area
+    }
+    return Cesium.Cartesian3.fromDegrees(observerLng, observerLat, alt);
   }, [observerLat, observerLng]);
 
   const viewerRef = useRef<any>(null);

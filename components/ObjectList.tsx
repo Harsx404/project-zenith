@@ -64,7 +64,7 @@ export default function ObjectList({
 
       {/* Drawer panel */}
       <div
-        className={`fixed top-0 right-0 h-full w-[380px] z-40 flex flex-col bg-black/80 backdrop-blur-xl border-l border-white/10 transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 h-full w-full md:w-[380px] z-40 flex flex-col bg-black/95 md:bg-black/80 backdrop-blur-xl border-l border-white/10 transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >

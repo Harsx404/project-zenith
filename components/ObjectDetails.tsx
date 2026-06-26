@@ -100,7 +100,7 @@ export default function ObjectDetails({
 
   return (
     <div
-      className="fixed bottom-6 left-6 z-40 w-[340px] animate-in slide-in-from-bottom-6 fade-in duration-300 bg-black/85 backdrop-blur-xl border border-white/10 overflow-hidden shadow-2xl shadow-cyan-900/20"
+      className="fixed bottom-0 left-0 w-full md:bottom-6 md:left-6 z-40 md:w-[340px] animate-in slide-in-from-bottom-6 fade-in duration-300 bg-black/90 md:bg-black/85 backdrop-blur-2xl border-t md:border border-white/10 overflow-hidden shadow-[0_-20px_40px_rgba(0,0,0,0.8)] md:shadow-2xl md:shadow-cyan-900/20 rounded-t-xl md:rounded-none"
     >
       {/* Hero Header */}
       <div className="relative h-28 w-full bg-space-black/50 border-b border-white/10">

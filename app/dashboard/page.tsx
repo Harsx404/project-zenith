@@ -197,34 +197,57 @@ function DashboardContent() {
       </div>
 
       {/* === TOP BAR (floating overlay) === */}
-      <div className={`relative z-20 transition-opacity duration-300 ${isFullscreen ? "opacity-0 hover:opacity-100" : ""}`}>
-        <div className="flex items-center justify-between px-6 py-4">
-          {/* Left: Location + Status */}
-          <div className="flex items-center gap-4">
-            <div className="bg-black/70 backdrop-blur-xl border border-white/10 px-4 py-2 flex items-center gap-3">
-              <MapPin className="w-4 h-4 text-cyan-400" />
-              <span className="text-xs font-mono text-white/70">
-                {lat.toFixed(4)}°, {lng.toFixed(4)}°
-              </span>
-            </div>
-            {utcTime && (
-              <div className="bg-black/70 backdrop-blur-xl border border-white/10 px-4 py-2 flex items-center gap-3">
-                <Clock className="w-3.5 h-3.5 text-cyan-400" />
-                <span className="text-xs font-mono text-white/70">
-                  {format(utcTime, "HH:mm:ss")} UTC
+      <div className={`relative z-20 pointer-events-none transition-opacity duration-300 ${isFullscreen ? "opacity-0 hover:opacity-100" : ""}`}>
+        <div className="flex flex-col md:flex-row md:items-center justify-between px-4 py-3 md:px-6 md:py-4 gap-3 md:gap-4">
+          
+          {/* Top Row on Mobile, Left side on Desktop */}
+          <div className="flex items-center justify-between md:justify-start w-full md:w-auto">
+            {/* Location + Status */}
+            <div className="flex items-center gap-2 md:gap-4 pointer-events-auto">
+              <div className="bg-black/70 backdrop-blur-xl border border-white/10 px-3 py-1.5 md:px-4 md:py-2 flex items-center gap-2 md:gap-3">
+                <MapPin className="w-3.5 h-3.5 md:w-4 md:h-4 text-cyan-400" />
+                <span className="text-[10px] md:text-xs font-mono text-white/70">
+                  {lat.toFixed(4)}°, {lng.toFixed(4)}°
                 </span>
               </div>
-            )}
-            {loading && (
-              <RefreshCw className="w-4 h-4 animate-spin text-cyan-400" />
-            )}
+              {utcTime && (
+                <div className="hidden sm:flex bg-black/70 backdrop-blur-xl border border-white/10 px-3 py-1.5 md:px-4 md:py-2 items-center gap-2 md:gap-3">
+                  <Clock className="w-3 h-3 md:w-3.5 md:h-3.5 text-cyan-400" />
+                  <span className="text-[10px] md:text-xs font-mono text-white/70">
+                    {format(utcTime, "HH:mm:ss")} UTC
+                  </span>
+                </div>
+              )}
+              {loading && (
+                <RefreshCw className="w-3.5 h-3.5 md:w-4 md:h-4 animate-spin text-cyan-400" />
+              )}
+            </div>
+
+            {/* Mobile Action Buttons (Right side on mobile) */}
+            <div className="flex md:hidden items-center gap-1.5 pointer-events-auto">
+              <button
+                onClick={() => setDrawerOpen(!drawerOpen)}
+                className={`p-2 border transition-all ${drawerOpen ? "bg-cyan-500/20 border-cyan-400/50 text-cyan-300" : "bg-black/70 backdrop-blur-xl border-white/10 text-white/70"}`}
+              >
+                <List className="w-3.5 h-3.5" />
+              </button>
+              <button
+                onClick={() => fetchScanData()}
+                disabled={loading}
+                className="p-2 bg-black/70 backdrop-blur-xl border border-white/10 text-white/70"
+              >
+                <RefreshCw className={`w-3.5 h-3.5 ${loading ? "animate-spin" : ""}`} />
+              </button>
+            </div>
           </div>
 
-          {/* Center: Filter Pills */}
-          <FilterPanel filters={filters} onToggle={toggleFilter} />
+          {/* Center: Filter Pills (Bottom row on mobile) */}
+          <div className="w-full md:w-auto md:flex-1 md:flex md:justify-center pointer-events-auto overflow-hidden">
+            <FilterPanel filters={filters} onToggle={toggleFilter} />
+          </div>
 
-          {/* Right: Action Buttons */}
-          <div className="flex items-center gap-2">
+          {/* Desktop Action Buttons */}
+          <div className="hidden md:flex items-center gap-2 pointer-events-auto">
             <button
               onClick={() => setDrawerOpen(!drawerOpen)}
               className={`p-2.5 border transition-all ${drawerOpen ? "bg-cyan-500/20 border-cyan-400/50 text-cyan-300" : "bg-black/70 backdrop-blur-xl border-white/10 text-white/70 hover:text-white hover:border-white/30"}`}
@@ -283,28 +306,28 @@ function DashboardContent() {
 
       {/* === BOTTOM STATS BAR === */}
       <div className={`absolute bottom-0 left-0 right-0 z-20 pointer-events-none transition-opacity duration-300 ${isFullscreen ? "opacity-0 hover:opacity-100" : ""}`}>
-        <div className="flex items-center justify-between px-6 pt-4 pb-10 bg-gradient-to-t from-black via-black/70 to-transparent pointer-events-auto">
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <Satellite className="w-3.5 h-3.5 text-white/50" />
-              <span className="text-[11px] font-mono text-white/50">
+        <div className="flex flex-col md:flex-row md:items-center justify-between px-4 pt-4 pb-6 md:px-6 md:pb-10 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-auto gap-2">
+          <div className="flex items-center justify-between md:justify-start w-full md:w-auto md:gap-6">
+            <div className="flex items-center gap-1.5 md:gap-2">
+              <Satellite className="w-3 h-3 md:w-3.5 md:h-3.5 text-white/50" />
+              <span className="text-[9px] md:text-[11px] font-mono text-white/50">
                 <span className="text-white font-bold">{totalObjects}</span> TRACKED
               </span>
             </div>
-            <div className="flex items-center gap-2">
-              <Eye className="w-3.5 h-3.5 text-white/50" />
-              <span className="text-[11px] font-mono text-white/50">
+            <div className="flex items-center gap-1.5 md:gap-2">
+              <Eye className="w-3 h-3 md:w-3.5 md:h-3.5 text-white/50" />
+              <span className="text-[9px] md:text-[11px] font-mono text-white/50">
                 <span className="text-green-400 font-bold">{visibleObjects}</span> VISIBLE
               </span>
             </div>
-            <div className="flex items-center gap-2">
-              <Crosshair className="w-3.5 h-3.5 text-white/50" />
-              <span className="text-[11px] font-mono text-white/50">
+            <div className="flex items-center gap-1.5 md:gap-2">
+              <Crosshair className="w-3 h-3 md:w-3.5 md:h-3.5 text-white/50" />
+              <span className="text-[9px] md:text-[11px] font-mono text-white/50">
                 <span className="text-cyan-400 font-bold">{zenithObjects}</span> ZENITH
               </span>
             </div>
           </div>
-          <div className="text-[10px] font-mono text-white/30 tracking-wider">
+          <div className="hidden md:block text-[10px] font-mono text-white/30 tracking-wider">
             F: FULLSCREEN · L: LIST · ↑↓: CYCLE · ESC: DESELECT
           </div>
         </div>
