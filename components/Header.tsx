@@ -9,7 +9,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="w-full px-8 py-6 flex items-center justify-between z-50 relative">
+      <header className="w-full px-6 md:px-8 py-6 flex items-center justify-between z-[60] relative">
         <Link href="/" className="font-heading font-bold text-xl tracking-[0.3em] flex items-center gap-1">
           ZENITH<span className="text-xs absolute -top-1 -right-3">®</span>
         </Link>
